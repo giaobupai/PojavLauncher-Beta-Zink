@@ -122,36 +122,6 @@ Java_org_lwjgl_vulkan_VK_getVulkanDriverHandle(ABI_COMPAT JNIEnv *env, ABI_COMPA
     return strtoul(getenv("VULKAN_PTR"), NULL, 0x10);
 }
 
-EXTERNAL_API JNIEXPORT void JNICALL
-Java_org_lwjgl_opengl_GL_nativeRegalMakeCurrent(JNIEnv *env, jclass clazz) {
-    if (getenv("POJAV_EXP_FRAME_BUFFER") != NULL && pojav_environ->config_renderer != RENDERER_VK_ZINK) {
-        /*printf("Regal: making current");
-    
-        RegalMakeCurrent_func *RegalMakeCurrent = (RegalMakeCurrent_func *) dlsym(RTLD_DEFAULT, "RegalMakeCurrent");
-        RegalMakeCurrent(potatoBridge.eglContext);*/
-
-        printf("regal removed\n");
-        abort();
-    }
-}
-
-EXTERNAL_API JNIEXPORT jlong JNICALL
-Java_org_lwjgl_opengl_GL_getGraphicsBufferAddr(JNIEnv *env, jobject thiz) {
-    if (getenv("POJAV_EXP_FRAME_BUFFER") != NULL && pojav_environ->config_renderer != RENDERER_VK_ZINK) {
-        return &gbuffer;
-    }
-}
-
-EXTERNAL_API JNIEXPORT jintArray JNICALL
-Java_org_lwjgl_opengl_GL_getNativeWidthHeight(JNIEnv *env, jobject thiz) {
-    if (getenv("POJAV_EXP_FRAME_BUFFER") != NULL && pojav_environ->config_renderer != RENDERER_VK_ZINK) {
-        jintArray ret = (*env)->NewIntArray(env,2);
-        jint arr[] = {pojav_environ->savedWidth, pojav_environ->savedHeight};
-        (*env)->SetIntArrayRegion(env,ret,0,2,arr);
-        return ret;
-    }
-}
-
 EXTERNAL_API void pojavTerminate() {
     printf("EGLBridge: Terminating\n");
 
