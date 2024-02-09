@@ -16,6 +16,7 @@
 #include <GL/osmesa.h>
 #include "ctxbridges/egl_loader.h"
 #include "ctxbridges/osmesa_loader.h"
+#include "driver_helper/nsbypass.h"
 
 #ifdef GLES_TEST
 #include <GLES2/gl2.h>
@@ -101,7 +102,9 @@ void load_vulkan() {
 JNIEXPORT void JNICALL
 Java_net_kdt_pojavlaunch_utils_JREUtils_setupBridgeWindow(JNIEnv* env, ABI_COMPAT jclass clazz, jobject surface) {
     pojav_environ->pojavWindow = ANativeWindow_fromSurface(env, surface);
-    if(br_setup_window != NULL) br_setup_window();
+    if(pojav_environ->config_renderer == RENDERER_VK_ZINK || pojav_environ->config_renderer == RENDERER_GL4ES) {
+        if(br_setup_window != NULL) br_setup_window();
+    }
 }
 
 JNIEXPORT void JNICALL
