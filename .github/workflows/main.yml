@@ -9,7 +9,13 @@ on:
   workflow_dispatch:
 jobs:
   build:
+    strategy:
+      matrix:
+        java: [17-ubuntu]
     runs-on: ubuntu-22.04
+    container:
+      image: mcr.microsoft.com/openjdk/jdk:${{ matrix.java }}
+      options: --user root
     env:
       CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
       VERA_KEYSTORE_PASSWORD: ${{ secrets.VERA_KEYSTORE_PASSWORD }}
@@ -18,7 +24,7 @@ jobs:
         uses: actions/checkout@v4.1.1
 
       - name: Get JRE 8
-        uses: dawidd6/action-download-artifact@v3
+        uses: dawidd6/action-download-artifact@v2
         with:
           workflow: build.yml
           path: app_pojavlauncher/src/main/assets/components/jre
@@ -28,7 +34,7 @@ jobs:
           name: jre8-pojav
 
       - name: Get JRE17
-        uses: dawidd6/action-download-artifact@v3
+        uses: dawidd6/action-download-artifact@v2
         with:
           workflow: build.yml
           path: app_pojavlauncher/src/main/assets/components/jre-new
@@ -38,7 +44,7 @@ jobs:
           name: jre17-pojav
 
       - name: Get LWJGL3
-        uses: dawidd6/action-download-artifact@v3
+        uses: dawidd6/action-download-artifact@v2
         with:
           workflow: main.yml
           path: app_pojavlauncher/src/main/assets/components/lwjgl3
@@ -47,19 +53,9 @@ jobs:
           branch: main
           name: lwjgl
 
-      - name: Validate Gradle Wrapper
-        uses: gradle/wrapper-validation-action@v2
-
       - uses: gradle/gradle-build-action@v3
         with:
           gradle-version: 7.6.1
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-          cache: 'gradle'
 
       - name: Build Release.apk
         if: github.repository_owner == 'Vera-Firefly' && github.ref_name == 'exp_v3'
