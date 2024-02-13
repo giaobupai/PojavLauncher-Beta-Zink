@@ -66,7 +66,7 @@ jobs:
       - name: Build Debug.apk
         run: |
           # Build the launcher
-          gradle :app_pojavlauncher:assembleDebug --build-cache  --parallel
+          gradle :app_pojavlauncher:assembleDebug
 
       - name: Upload Release
         continue-on-error: true
