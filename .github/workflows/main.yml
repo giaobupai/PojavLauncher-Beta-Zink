@@ -18,7 +18,8 @@ jobs:
         uses: actions/checkout@v4.1.1
 
       - name: Validate Gradle Wrapper
-        uses: gradle/wrapper-validation-action@v2
+        uses: gradle/wrapper-validation-action@v2.1.1
+          allow-snapshots:true
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
