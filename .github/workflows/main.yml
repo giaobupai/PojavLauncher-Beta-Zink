@@ -64,12 +64,12 @@ jobs:
       - name: Build Release.apk
         if: github.repository_owner == 'Vera-Firefly' && github.ref_name == 'exp_v3'
         run: |
-          gradle :app_pojavlauncher:assemblerelease
+          gradle :app_pojavlauncher:assemblerelease --build-cache
 
       - name: Build Debug.apk
         run: |
           # Build the launcher
-          gradle :app_pojavlauncher:assembleDebug
+          gradle :app_pojavlauncher:assembleDebug --build-cache
 
       - name: Upload Release
         continue-on-error: true
