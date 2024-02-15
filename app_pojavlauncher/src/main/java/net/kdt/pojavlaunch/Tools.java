@@ -313,8 +313,8 @@ public final class Tools {
         StringBuilder cacioClasspath = new StringBuilder();
         cacioClasspath.append("-Xbootclasspath/").append(isJava8 ? "p" : "a");
         cacioClasspath.append("-Xbootclasspath/").append(isJava11 ? "p" : "a");
-        File cacioDir = new File(DIR_GAME_HOME + "/caciocavallo" + (isJava8 ? "" : "11" "17"));
-        File cacioDir = new File(DIR_GAME_HOME + "/caciocavallo11" + (isJava11 ? "" : "8" "17"));
+        File cacioDir = new File(DIR_GAME_HOME + "/caciocavallo" + (isJava8 ? "" : "17"));
+        File cacioDir = new File(DIR_GAME_HOME + "/caciocavallo11" + (isJava11 ? "" : "17"));
         File[] cacioFiles = cacioDir.listFiles();
         if (cacioFiles != null) {
             for (File file : cacioFiles) {
