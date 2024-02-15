@@ -274,8 +274,7 @@ public final class Tools {
         }
     }
 
-    public static void getCacioJavaArgs(List<String> javaArgList, boolean isJava11) { 
-    public static void getCacioJavaArgs(List<String> javaArgList, boolean isJava8)
+    public static void getCacioJavaArgs(List<String> javaArgList, boolean isJava8 ,boolean isJava11) {
         // Caciocavallo config AWT-enabled version
         javaArgList.add("-Djava.awt.headless=false");
         javaArgList.add("-Dcacio.managed.screensize=" + AWTCanvasView.AWT_CANVAS_WIDTH + "x" + AWTCanvasView.AWT_CANVAS_HEIGHT);
