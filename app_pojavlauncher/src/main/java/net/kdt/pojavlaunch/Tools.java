@@ -273,7 +273,7 @@ public final class Tools {
         }
     }
 
-    public static void getCacioJavaArgs(List<String> javaArgList, boolean isJava11)
+    public static void getCacioJavaArgs(List<String> javaArgList, boolean isJava11);
     public static void getCacioJavaArgs(List<String> javaArgList, boolean isJava8) {
         // Caciocavallo config AWT-enabled version
         javaArgList.add("-Djava.awt.headless=false");
