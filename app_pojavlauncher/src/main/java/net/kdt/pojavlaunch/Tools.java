@@ -211,6 +211,7 @@ public final class Tools {
         }
 
         getCacioJavaArgs(javaArgList, runtime.javaVersion == 8);
+        getCacioJavaArgs(javaArgList, runtime.javaVersion == 11);
 
         if (versionInfo.logging != null) {
             String configFile = Tools.DIR_DATA + "/security/" + versionInfo.logging.client.file.id.replace("client", "log4j-rce-patch");
@@ -311,8 +312,9 @@ public final class Tools {
 
         StringBuilder cacioClasspath = new StringBuilder();
         cacioClasspath.append("-Xbootclasspath/").append(isJava8 ? "p" : "a");
-        File cacioDir = new File(DIR_GAME_HOME + "/caciocavallo" + (isJava8 ? "" : "17"));
-        File cacioDir = new File(DIR_GAME_HOME + "/caciocavallo11" + (isJava11 ? "" : "17"));
+        cacioClasspath.append("-Xbootclasspath/").append(isJava11 ? "p" : "a");
+        File cacioDir = new File(DIR_GAME_HOME + "/caciocavallo" + (isJava8 ? "" : "11" "17"));
+        File cacioDir = new File(DIR_GAME_HOME + "/caciocavallo11" + (isJava11 ? "" : "8" "17"));
         File[] cacioFiles = cacioDir.listFiles();
         if (cacioFiles != null) {
             for (File file : cacioFiles) {
