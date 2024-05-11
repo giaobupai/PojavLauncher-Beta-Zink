@@ -580,7 +580,7 @@ Java_org_lwjgl_opengl_GL_nativeRegalMakeCurrent(JNIEnv *env, jclass clazz) {
 EXTERNAL_API JNIEXPORT jlong JNICALL
 Java_org_lwjgl_opengl_GL_getGraphicsBufferAddr(JNIEnv *env, jobject thiz) {
     if (getenv("POJAV_EXP_FRAME_BUFFER") != NULL && pojav_environ->config_renderer != RENDERER_VK_ZINK) {
-        return &gbuffer;
+        return gbuffer;
     }
 }
 
