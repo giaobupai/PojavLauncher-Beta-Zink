@@ -58,7 +58,7 @@ void* load_turnip_vulkan();
 #ifndef FRAME_BUFFER_SUPPOST
 #define FRAME_BUFFER_SUPPOST
 
-long long gbuffer;
+void* gbuffer;
 
 #endif
 
