@@ -44,7 +44,7 @@ LOCAL_SRC_FILES := \
     driver_helper/nsbypass.c
 
 ifeq ($(TARGET_ARCH_ABI),arm64-v8a)
-LOCAL_CFLAGS += -DADRENO_POSSIBLE -Wno-unknown-warning-option
+LOCAL_CFLAGS += -DADRENO_POSSIBLE -Wno-unknown-warning-option -Wno-unused-const-variable -Wno-unused-variable -Wno-unused-parameter -Wno-format -Wno-sign-compare
 LOCAL_LDLIBS += -lEGL -lGLESv2
 endif
 include $(BUILD_SHARED_LIBRARY)
@@ -71,6 +71,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := pojavexec_awt
 LOCAL_SRC_FILES := \
     awt_bridge.c
+LOCAL_CFLAGS += -Wno-unknown-warning-option -Wno-unused-const-variable -Wno-unused-variable -Wno-unused-parameter -Wno-format -Wno-sign-compare
 include $(BUILD_SHARED_LIBRARY)
 
 # Helper to get current thread
