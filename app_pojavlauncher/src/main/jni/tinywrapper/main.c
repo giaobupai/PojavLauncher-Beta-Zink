@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <dlfcn.h>
 
+#include <string.h>
+#include <stdlib.h>
+
 #include "GL/gl.h"
 #include "GLES3/gl32.h"
 #include "string_utils.h"
@@ -16,6 +19,9 @@
 int proxy_width, proxy_height, proxy_intformat, maxTextureSize;
 
 void glBindFragDataLocationEXT(GLuint program, GLuint colorNumber, const char * name);
+
+void* 
+void* 
 
 void(*gles_glGetTexLevelParameteriv)(GLenum target, GLint level, GLenum pname, GLint *params);
 void(*gles_glShaderSource)(GLuint shader, GLsizei count, const GLchar * const *string, const GLint *length);
