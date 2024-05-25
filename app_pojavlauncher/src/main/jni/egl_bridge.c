@@ -81,6 +81,7 @@ void (*vtest_swap_buffers_p) (void);
 void bigcore_set_affinity();
 
 void* egl_make_current(void* window);
+void* pthread_create();
 
 
 
