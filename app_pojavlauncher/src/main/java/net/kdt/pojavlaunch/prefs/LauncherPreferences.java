@@ -7,9 +7,15 @@ import static net.kdt.pojavlaunch.Architecture.is32BitsDevice;
 
 import android.app.Activity;
 import android.content.*;
+import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.os.Build;
 import android.util.Log;
+
+import androidx.core.view.DisplayCutoutCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import net.kdt.pojavlaunch.*;
 import net.kdt.pojavlaunch.multirt.MultiRTUtils;
@@ -66,7 +72,6 @@ public class LauncherPreferences {
     public static boolean PREF_BIG_CORE_AFFINITY = false;
     public static boolean PREF_ZINK_PREFER_SYSTEM_DRIVER = false;
 
-    public static boolean PREF_ZINK_CRASH_HANDLE = false;
     public static boolean PREF_EXP_SETUP = false;
     public static boolean PREF_EXP_SETUP_DEFAULT = false;
     public static boolean PREF_EXP_SETUP_S = false;
@@ -76,6 +81,7 @@ public class LauncherPreferences {
     public static boolean PREF_EXP_SETUP_PAN = false;
     public static boolean PREF_EXP_SETUP_FD = false;
 
+    public static boolean PREF_SPARE_BRIDGE = false;
     public static boolean PREF_EXP_FRAME_BUFFER = false;
     public static boolean PREF_EXP_ENABLE_SYSTEM = false;
     public static boolean PREF_EXP_ENABLE_SPECIFIC = false;
@@ -136,7 +142,7 @@ public class LauncherPreferences {
         PREF_SKIP_NOTIFICATION_PERMISSION_CHECK = DEFAULT_PREF.getBoolean(PREF_KEY_SKIP_NOTIFICATION_CHECK, false);
         PREF_VSYNC_IN_ZINK = DEFAULT_PREF.getBoolean("vsync_in_zink", true);
 
-        PREF_ZINK_CRASH_HANDLE = DEFAULT_PREF.getBoolean("zinkCrashhandle", false);
+        PREF_SPARE_BRIDGE = DEFAULT_PREF.getBoolean("spareBridge", false);
         PREF_EXP_FRAME_BUFFER = DEFAULT_PREF.getBoolean("ExpFrameBuffer", false);
         PREF_EXP_ENABLE_SYSTEM = DEFAULT_PREF.getBoolean("ebSystem", false);
         PREF_EXP_ENABLE_SPECIFIC = DEFAULT_PREF.getBoolean("ebSpecific", false);
@@ -198,17 +204,18 @@ public class LauncherPreferences {
     /** Compute the notch size to avoid being out of bounds */
     public static void computeNotchSize(Activity activity) {
         if (Build.VERSION.SDK_INT < P) return;
-
         try {
+            final Rect cutout;
             if(SDK_INT >= Build.VERSION_CODES.S){
-                Rect notchRect = activity.getWindowManager().getCurrentWindowMetrics().getWindowInsets().getDisplayCutout().getBoundingRects().get(0);
-                LauncherPreferences.PREF_NOTCH_SIZE = Math.min(notchRect.width(), notchRect.height());
-                Tools.updateWindowSize(activity);
-                return;
+                cutout = activity.getWindowManager().getCurrentWindowMetrics().getWindowInsets().getDisplayCutout().getBoundingRects().get(0);
+            } else {
+                cutout = activity.getWindow().getDecorView().getRootWindowInsets().getDisplayCutout().getBoundingRects().get(0);
             }
-            Rect notchRect = activity.getWindow().getDecorView().getRootWindowInsets().getDisplayCutout().getBoundingRects().get(0);
-            // Math min is to handle all rotations
-            LauncherPreferences.PREF_NOTCH_SIZE = Math.min(notchRect.width(), notchRect.height());
+            // Notch values are rotation sensitive, handle all cases
+            int orientation = activity.getResources().getConfiguration().orientation;
+            if (orientation == Configuration.ORIENTATION_PORTRAIT) LauncherPreferences.PREF_NOTCH_SIZE = cutout.height();
+            else if (orientation == Configuration.ORIENTATION_LANDSCAPE) LauncherPreferences.PREF_NOTCH_SIZE = cutout.width();
+            else LauncherPreferences.PREF_NOTCH_SIZE = Math.min(cutout.width(), cutout.height());
         }catch (Exception e){
             Log.i("NOTCH DETECTION", "No notch detected, or the device if in split screen mode");
             LauncherPreferences.PREF_NOTCH_SIZE = -1;
