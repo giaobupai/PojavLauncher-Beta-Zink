@@ -18,7 +18,7 @@
 #include "ctxbridges/osmesa_loader.h"
 
 #ifdef GLES_TEST
-#include <GLES2/gl2.h>
+#include <GLES3/gl3.h>
 #endif
 
 #include <android/native_window.h>
