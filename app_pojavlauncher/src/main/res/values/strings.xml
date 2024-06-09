@@ -90,6 +90,9 @@
     <string name="global_select">Select</string>
     <string name="global_retry">Retry</string>
     <string name="global_default">Default</string>
+    <string name="global_rename">Rename</string>
+    <string name="global_return">Return</string>
+    <string name="global_refresh">Refresh</string>
 
     <!-- MainActivity: strings -->
     <string name="mcn_exit_title">Application/Game exited with code %d, check latestlog.txt for more details.</string>
@@ -436,7 +439,7 @@
     <string name="preference_exp_framebuffer_title">Spare frame buffer</string>
     <string name="preference_exp_framebuffer">Use the frame buffer of the second scheme, close it if launch failed</string>
     <string name="preference_renderer_setup_extra">Renderer (Extra)</string>
-    <string name="preference_renderer_extra_default">Mesa24.1.0 (Default)</string>
+    <string name="preference_renderer_extra_default">Mesa24.1.1 (Default)</string>
     <string name="preference_extra_mesa_version">Mesa Version</string>
     <string name="preference_extra_driver_modle">Driver Modle</string>
     <!-- Dialog box prompt -->
@@ -450,6 +453,8 @@
     <string name="alertdialog_tipc">Remember to check if your device supports these features before using them</string>
     <string name="alertdialog_done">Done</string>
     <string name="alertdialog_cancel">Cancel</string>
+    <string name="customglglsl_alertdialog_error_gl">GL version must be between 2.8 and 4.6</string>
+    <string name="customglglsl_alertdialog_error_glsl">GLSL version must be between 280 and 460</string>
     <!-- Custom GL/GLSL Version -->
     <string name="preference_exp_alertdialog_glmessage">Before you do this, you must know what you are doing\nAre you sure you want to open it?</string>
     <string name="preference_exp_custommv">GL/GLSL Version</string>
@@ -460,4 +465,14 @@
     <string name="preference_rendererexp_custom_glversion">Allow custom Mesa GL/GLSL version</string>
     <string name="custom_gl_version">Mesa GL version:</string>
     <string name="custom_glsl_version">Mesa GLSL version:</string>
+    <!-- Customize Game Path -->
+    <string name="permissions_manage_external_storage">Pojav Glow·Worm requires permission to manage all files on the device in order to customize the location where game files are saved. Please grant permission to Pojav Glow·Worm!</string>
+    <string name="profiles_path_title">Game Path Management</string>
+    <string name="profiles_path_default">Default Path</string>
+    <string name="profiles_path_create_new">Add New Path</string>
+    <string name="profiles_path_create_new_title">Name This Path</string>
+    <string name="profiles_path_delete_title">Delete This Path</string>
+    <string name="profiles_path_delete_message">The launcher will delete this path, but it will not delete the files saved in the corresponding path. You can re-add this path after deletion.</string>
+    <string name="profiles_path_task_in_progress">Task in progress, path management features are temporarily unavailable</string>
+
 </resources>
