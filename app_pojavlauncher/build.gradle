@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application' version '7.4.2'
+    id 'com.android.application' version '8.6.0-alpha05'
 }
 
 static def getDate() { return new Date().format('yyyyMMdd') }
@@ -227,7 +227,7 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.1.0-beta01'
     implementation 'androidx.annotation:annotation:1.8.0'
 
-    implementation "androidx.constraintlayout:constraintlayout:2.2.0-alpha11"
+    implementation "androidx.constraintlayout:constraintlayout:2.2.0-alpha13"
 
     implementation 'com.github.duanhong169:checkerboarddrawable:1.0.2'
     implementation 'com.github.PojavLauncherTeam:portrait-sdp:ed33e89cbc'
