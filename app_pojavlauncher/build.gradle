@@ -5,7 +5,7 @@ plugins {
 static def getDate() { return new Date().format('yyyyMMdd') }
 
 static def getDateSeconds() {
-    return 9999999
+    return 10000169
 }
 
 def getVersionName = {
@@ -103,9 +103,9 @@ android {
     }
 
     defaultConfig {
-        applicationId "net.kdt.pojavlaunch.firefly"
+        applicationId "net.kdt.pojavlaunch"
         minSdkVersion 24
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode getDateSeconds()
         versionName getVersionName()
         multiDexEnabled true //important
@@ -120,8 +120,8 @@ android {
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.customDebug
-            resValue 'string', 'application_package', 'net.kdt.pojavlaunch.firefly.debug'
-            resValue 'string', 'storageProviderAuthorities', 'net.kdt.pojavlaunch.scoped.gamefolder.firefly.debug'
+            resValue 'string', 'application_package', 'net.kdt.pojavlaunch.debug'
+            resValue 'string', 'storageProviderAuthorities', 'net.kdt.pojavlaunch.scoped.gamefolder.debug'
             resValue 'string', 'fileProviderAuthorities', 'net.kdt.pojavlaunch.scoped.FileFileProvider.debug'
         }
         release {
@@ -129,8 +129,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.releaseBuild
-            resValue 'string', 'application_package', 'net.kdt.pojavlaunch.firefly'
-            resValue 'string', 'storageProviderAuthorities', 'net.kdt.pojavlaunch.scoped.gamefolder.firefly'
+            resValue 'string', 'application_package', 'net.kdt.pojavlaunch'
+            resValue 'string', 'storageProviderAuthorities', 'net.kdt.pojavlaunch.scoped.gamefolder'
             resValue 'string', 'fileProviderAuthorities', 'net.kdt.pojavlaunch.scoped.FileFileProvider'
         }
     }
