@@ -3,6 +3,8 @@
 #include <string.h>
 #include <stdio.h>
 
+#define JNI_VERSION_21  0x00150000
+
 static JavaVM* dalvikJavaVMPtr;
 
 static JavaVM* runtimeJavaVMPtr;
