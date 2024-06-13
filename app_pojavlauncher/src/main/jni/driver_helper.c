@@ -1,16 +1,16 @@
 //
 // Created by hanji on 08.02.2023.
-// Modefiled by Vera-Firefly on 02.06.2024.
+// Modefiled by aaaapai on 13.06.2024.
 //
 
-#include <EGL/egl.h>
+#include "EGL/egl.h"
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
 #include <dlfcn.h>
 #include <android/dlext.h>
 #include "driver_helper/nsbypass.h"
-#include "GL/gl.h"
+#include "GL/glcorearb.h"
 
 //#define ADRENO_POSSIBLE
 #ifdef ADRENO_POSSIBLE
