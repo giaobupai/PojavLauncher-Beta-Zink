@@ -5,8 +5,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "GL/gl.h"
-#include "GLES3/gl32.h"
+#include "GL/glcorearb.h"
+#include "GLES/gl.h"
 #include "string_utils.h"
 
 #define LOOKUP_FUNC(func) \
