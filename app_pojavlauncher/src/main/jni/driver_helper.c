@@ -1,8 +1,3 @@
-//
-// Created by hanji on 08.02.2023.
-// Modefiled by aaaapai on 13.06.2024.
-//
-
 #include "EGL/egl.h"
 #include <stdbool.h>
 #include <string.h>
