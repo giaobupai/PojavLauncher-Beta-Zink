@@ -81,7 +81,7 @@ void (*vtest_swap_buffers_p) (void);
 void bigcore_set_affinity();
 
 void* egl_make_current(void* window);
-void* pthread_create();
+void* pthread_create(egl_make_current);
 
 
 
@@ -343,7 +343,7 @@ int pojavInitOpenGL() {
         if (!potatoBridge.eglSurface) {
             printf("EGLBridge: Error eglCreateWindowSurface failed: %p\n", eglGetError_p());
             //(*env)->ThrowNew(env,(*env)->FindClass(env,"java/lang/Exception"),"Trace exception");
-            return 4;
+            return 0;
         }
 
         // sanity checks
@@ -356,7 +356,7 @@ int pojavInitOpenGL() {
         printf("EGLBridge: Initialized!\n");
         printf("EGLBridge: ThreadID=%d\n", gettid());
         printf("EGLBridge: EGLDisplay=%p, EGLSurface=%p\n",
-/* window==4 ? EGL_NO_CONTEXT : */
+/* window==0 ? EGL_NO_CONTEXT : */
                potatoBridge.eglDisplay,
                potatoBridge.eglSurface
         );
@@ -470,9 +470,9 @@ EXTERNAL_API void pojavSwapBuffers() {
 void* egl_make_current(void* window) {
     EGLBoolean success = eglMakeCurrent_p(
             potatoBridge.eglDisplay,
-            window==4 ? (EGLSurface *) 4 : potatoBridge.eglSurface,
-            window==4 ? (EGLSurface *) 4 : potatoBridge.eglSurface,
-            /* window==4 ? EGL_NO_CONTEXT : */ (EGLContext *) window
+            window==0 ? (EGLSurface *) 0 : potatoBridge.eglSurface,
+            window==0 ? (EGLSurface *) 0 : potatoBridge.eglSurface,
+            /* window==0 ? EGL_NO_CONTEXT : */ (EGLContext *) window
     );
 
     if (success == EGL_FALSE) {
