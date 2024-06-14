@@ -81,7 +81,7 @@ void (*vtest_swap_buffers_p) (void);
 void bigcore_set_affinity();
 
 void* egl_make_current(void* window);
-void* pthread_create(egl_make_current);
+void* pthread_create();
 
 
 
@@ -375,7 +375,7 @@ int pojavInitOpenGL() {
         printf("VirGL: created EGL context %p\n", ctx);
 
         pthread_t t;
-        pthread_create(&t, NULL, egl_make_current, (void *)ctx);
+        pthread_create();
         usleep(100*1000); // need enough time for the server to init
     }
 
