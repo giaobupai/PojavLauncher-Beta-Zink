@@ -18,6 +18,7 @@ extern "C" {
 */
 
 #include "eglplatform.h"
+#include "egl.h"
 
 #define EGL_EGLEXT_VERSION 20231215
 
