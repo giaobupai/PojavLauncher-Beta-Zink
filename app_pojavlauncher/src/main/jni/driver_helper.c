@@ -1,4 +1,4 @@
-#include "EGL/eglext.h"
+#include "EGL/egl.h"
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
