@@ -5,7 +5,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "GL/gl.h"
+#include "GL/glcorearb.h"
+#include "GL/glext.h"
 #include "GLES/gl.h"
 #include "string_utils.h"
 
