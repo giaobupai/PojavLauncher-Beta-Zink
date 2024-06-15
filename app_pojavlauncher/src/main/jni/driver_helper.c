@@ -1,4 +1,4 @@
-#include "EGL/egl.h"
+#include "EGL/eglext.h"
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
@@ -6,6 +6,8 @@
 #include <android/dlext.h>
 #include "driver_helper/nsbypass.h"
 #include "GL/glcorearb.h"
+
+GLAPI const GLubyte *APIENTRY glGetString(GLenum name);
 
 //#define ADRENO_POSSIBLE
 #ifdef ADRENO_POSSIBLE
