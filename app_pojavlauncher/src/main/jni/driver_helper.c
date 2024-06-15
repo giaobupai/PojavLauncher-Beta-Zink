@@ -31,8 +31,8 @@ bool checkAdrenoGraphics() {
         eglDestroyContext(eglDisplay, context);
         eglTerminate(eglDisplay);
     }
-    const char* vendor = glGetString (GL_VENDOR);
-    const char* renderer = glGetString (GL_RENDERER);
+    const char* vendor = glGetString_p(GL_VENDOR);
+    const char* renderer = glGetString_p(GL_RENDERER);
     bool is_adreno = false;
     if(strcmp(vendor, "Qualcomm") == 0 && strstr(renderer, "Adreno") != NULL) {
         is_adreno = true; // TODO: check for Turnip support
