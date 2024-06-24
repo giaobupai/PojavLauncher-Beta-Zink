@@ -47,7 +47,7 @@ LOCAL_SRC_FILES := \
     driver_helper/nsbypass.c
 
 ifeq ($(TARGET_ARCH_ABI),arm64-v8a)
-LOCAL_CFLAGS += -DADRENO_POSSIBLE  -Wno-int-conversion -Wno-unknown-warning-option -Wno-unused-const-variable -Wno-unused-variable -Wno-unused-parameter -Wno-format -Wno-sign-compare -Wno-error=implicit-function-declaration -mllvm -polly -mllvm -polly-vectorizer=stripmine -mllvm -polly-invariant-load-hoisting -mllvm -polly-run-inliner -mllvm -polly-run-dce -std=gnu2x
+LOCAL_CFLAGS += -O3 -DADRENO_POSSIBLE  -Wno-int-conversion -Wno-unknown-warning-option -Wno-unused-const-variable -Wno-unused-variable -Wno-unused-parameter -Wno-format -Wno-sign-compare -Wno-error=implicit-function-declaration -mllvm -polly -mllvm -polly-vectorizer=stripmine -polly-invariant-load-hoisting -mllvm -polly-run-inliner -mllvm -polly-run-dce -std=gnu2x
 LOCAL_LDLIBS += -landroid -lEGL -lGLESv3
 endif
 include $(BUILD_SHARED_LIBRARY)
@@ -101,7 +101,4 @@ LOCAL_SHARED_LIBRARIES := awt_headless
 LOCAL_SRC_FILES := xawt_fake.c
 LOCAL_CFLAGS += -mllvm -polly -mllvm -polly-vectorizer=stripmine -mllvm -polly-invariant-load-hoisting -mllvm -polly-run-inliner -mllvm -polly-run-dce -Wno-int-conversion
 include $(BUILD_SHARED_LIBRARY)
-
-# delete fake libs after linked
-$(info $(shell (rm $(HERE_PATH)/../jniLibs/*/libawt_headless.so)))
 
