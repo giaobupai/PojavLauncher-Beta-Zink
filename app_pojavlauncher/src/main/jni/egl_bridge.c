@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <dlfcn.h>
 
+#include <pthread.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -12,7 +13,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "EGL/eglext.h"
+#include "EGL/egl.h"
 #include "GL/osmesa.h"
 #include "ctxbridges/egl_loader.h"
 #include "ctxbridges/osmesa_loader.h"
@@ -81,8 +82,6 @@ void (*vtest_swap_buffers_p) (void);
 void bigcore_set_affinity();
 
 void* egl_make_current(void* window);
-void* pthread_create();
-
 
 
 EXTERNAL_API void pojavTerminate() {
@@ -375,7 +374,7 @@ int pojavInitOpenGL() {
         printf("VirGL: created EGL context %p\n", ctx);
 
         pthread_t t;
-        pthread_create();
+        pthread_create(&t, NULL, egl_make_current, (void *)ctx);
         usleep(100*1000); // need enough time for the server to init
     }
 
