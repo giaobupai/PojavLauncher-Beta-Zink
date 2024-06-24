@@ -1,7 +1,7 @@
 //
 // Created by maks on 21.09.2022.
 //
-#include "EGL/eglext.h"
+#include "EGL/egl.h"
 #ifndef POJAVLAUNCHER_EGL_LOADER_H
 #define POJAVLAUNCHER_EGL_LOADER_H
 
