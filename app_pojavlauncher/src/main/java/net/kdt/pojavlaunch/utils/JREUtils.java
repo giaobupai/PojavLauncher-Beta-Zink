@@ -299,8 +299,8 @@ public class JREUtils {
             int glesMajor = getDetectedVersion();
             Log.i("glesDetect","GLES version detected: "+glesMajor);
 
-            if (glesMajor < 3) {
-                //fallback to 2 since it's the minimum for the entire app
+            if (glesMajor < 2) {
+                //fallback to 3 since I want
                 envMap.put("LIBGL_ES","2");
             } else if (LOCAL_RENDERER.startsWith("opengles")) {
                 envMap.put("LIBGL_ES", LOCAL_RENDERER.replace("opengles", "").replace("_5", ""));
