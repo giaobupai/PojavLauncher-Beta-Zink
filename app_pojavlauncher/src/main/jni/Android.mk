@@ -47,7 +47,7 @@ LOCAL_SRC_FILES := \
     driver_helper/nsbypass.c
 
 ifeq ($(TARGET_ARCH_ABI),arm64-v8a)
-LOCAL_CFLAGS += -DADRENO_POSSIBLE  -Wno-int-conversion -Wno-unknown-warning-option -Wno-unused-const-variable -Wno-unused-variable -Wno-unused-parameter -Wno-format -Wno-sign-compare -Wno-error=implicit-function-declaration -mllvm -polly -mllvm -polly-vectorizer=stripmine -polly-invariant-load-hoisting -mllvm -polly-run-inliner -mllvm -polly-run-dce -std=gnu2x
+LOCAL_CFLAGS += -O2 -DADRENO_POSSIBLE  -Wno-int-conversion -Wno-unknown-warning-option -Wno-unused-const-variable -Wno-unused-variable -Wno-unused-parameter -Wno-format -Wno-sign-compare -Wno-error=implicit-function-declaration -mllvm -polly -mllvm -polly-vectorizer=stripmine -mllvm -polly-invariant-load-hoisting -mllvm -polly-run-inliner -mllvm -polly-run-dce -std=gnu2x
 LOCAL_LDLIBS += -landroid -lEGL -lGLESv3
 endif
 include $(BUILD_SHARED_LIBRARY)
@@ -84,12 +84,6 @@ include $(BUILD_SHARED_LIBRARY)
 # LOCAL_MODULE := thread64helper
 # LOCAL_SRC_FILES := thread_helper.cpp
 # include $(BUILD_SHARED_LIBRARY)
-
-# fake lib for linker
-include $(CLEAR_VARS)
-LOCAL_MODULE := awt_headless
-LOCAL_CFLAGS += -mllvm -polly -mllvm -polly-vectorizer=stripmine -mllvm -polly-invariant-load-hoisting -mllvm -polly-run-inliner -mllvm -polly-run-dce -Wno-int-conversion
-include $(BUILD_SHARED_LIBRARY)
 
 # libawt_xawt without X11, used to get Caciocavallo working
 LOCAL_PATH := $(HERE_PATH)/awt_xawt
