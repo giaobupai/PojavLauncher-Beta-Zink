@@ -137,7 +137,7 @@ void gl_make_current(gl_render_window_t* bundle) {
         if(hasSetMainWindow) {
             pojav_environ->mainWindowBundle->newNativeSurface = NULL;
             if(getenv("POJAV_SPARE_BRIDGE") != NULL) {
-                gl_swap_surface(pojav_environ->mainWindowBundle, bundle);
+                gl_swap_surface(pojav_environ->mainWindowBundle);
             } else {
                 gl_swap_surface((gl_render_window_t*)pojav_environ->mainWindowBundle);
             }
