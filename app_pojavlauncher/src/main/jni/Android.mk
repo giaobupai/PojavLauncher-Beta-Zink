@@ -85,6 +85,11 @@ include $(BUILD_SHARED_LIBRARY)
 # LOCAL_SRC_FILES := thread_helper.cpp
 # include $(BUILD_SHARED_LIBRARY)
 
+# fake lib for linker
+include $(CLEAR_VARS)
+LOCAL_MODULE := awt_headless
+include $(BUILD_SHARED_LIBRARY)
+
 # libawt_xawt without X11, used to get Caciocavallo working
 LOCAL_PATH := $(HERE_PATH)/awt_xawt
 include $(CLEAR_VARS)
