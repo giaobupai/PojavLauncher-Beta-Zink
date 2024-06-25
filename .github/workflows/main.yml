@@ -25,7 +25,7 @@ jobs:
           workflow: main.yml
           path: app_pojavlauncher/src/main/assets/components/lwjgl3
           workflow_conclusion: success
-          repo: Vera-Firefly/lwjgl3-build
+          repo: aaaapai/lwjgl3-build
           branch: main
           name: lwjgl
 
