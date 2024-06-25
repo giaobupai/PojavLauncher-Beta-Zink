@@ -7,7 +7,7 @@
 #include "driver_helper/nsbypass.h"
 #include "GL/glcorearb.h"
 
-const GLubyte *APIENTRY glGetString(GLenum name);
+GLAPI const GLubyte *APIENTRY glGetString(GLenum name);
 
 //#define ADRENO_POSSIBLE
 #ifdef ADRENO_POSSIBLE
